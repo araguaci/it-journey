@@ -2,15 +2,13 @@
 title: Build-Destroy-Repeat
 author: null
 description: null
-permalink: posts/bdr/
 categories:
   - Posts
 sidebar:
   nav: docs
-toc: true
 toc_sticky: true
-date: '2021-10-27T21:42:21.287Z'
-lastmod: '2022-01-09T04:33:38.245Z'
+date: 2021-10-27T21:42:21.287Z
+lastmod: 2024-05-20T17:47:12.251Z
 draft: false
 ---
 

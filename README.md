@@ -1,14 +1,23 @@
 ---
-title: it-journey
+title: README - it-journey
 description: it-journey
 excerpt: it-journey
 version: 0.0.0
 date-released: 2022-03-01
-url: https://github.com/bamr87/it-journey
-tags: []
+repo: https://github.com/bamr87/it-journey
+tags:
+    - it-journey
+    - readme
+    - jekyll
 license: MIT
-lastmod: 2024-02-25T18:21:31.035Z
+lastmod: 2024-05-17T01:42:30.675Z
 created: 2022-03-01T12:00:00.000Z
+draft: in progress
+slug: readme
+keywords:
+    - readme
+permalink: /readme/
+layout: home
 ---
 
 
@@ -17,10 +26,13 @@ Branch | Build Status
 Master | [![Build Status](https://app.travis-ci.com/bamr87/it-journey.svg?branch=master)](https://app.travis-ci.com/bamr87/it-journey)
 gh-pages | [![Build Status](https://app.travis-ci.com/bamr87/it-journey.svg?branch=gh-pages)](https://app.travis-ci.com/bamr87/it-journey)
 
+[![pages-build-deployment](https://github.com/bamr87/it-journey/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/bamr87/it-journey/actions/workflows/pages/pages-build-deployment)
 
-# README
+## README
 
 Welcome to the source code reposoity for it-journey.dev.
+ 
+test
 
 ## About IT-Journey.dev
 
@@ -79,7 +91,35 @@ From zero to hero collection of docs, tools, scripts, and information to support
 * git
 * gh cli
 
+## Docker Image Build
 
+```shell
+docker build -t it-journey .
+```
+
+## Docker Run
+<!-- TODO: combine windows and mac commands -->
+
+### Mac
+
+```shell
+docker run -p 4002:4002 -v /Users/bamr87/github/it-journey:/app it-journey
+```
+
+```shell
+http://localhost:4002/
+```
+
+### Windows
+
+<!-- TODO: Check on windows docker bug "Auto-regeneration may not work on some Windows versions."-->
+
+```shell
+docker run -p 4002:4002 -v C:\Users\AmrAbdel-Motaleb\github\it-journey:/app it-journey
+```
+
+> [!NOTE]
+> Auto-regeneration may not work on some Windows versions
 
 ## Sources
 

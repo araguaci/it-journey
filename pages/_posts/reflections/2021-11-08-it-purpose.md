@@ -2,15 +2,10 @@
 title: IT Purpose
 author: null
 description: null
-permalink: 'posts/purpose/'
 categories:
   - Posts
-sidebar:
-  nav: posts
-toc: true
-toc_sticky: true
-date: '2021-11-08T19:50:20.168Z'
-lastmod: '2021-11-08T19:52:00.979Z'
+date: 2021-11-08T19:50:20.168Z
+lastmod: 2024-05-20T17:41:07.639Z
 draft: true
 ---
 # IT-Manifesto

@@ -10,26 +10,8 @@ tags:
   - article
 meta: null
 draft: true
-lastmod: 2022-07-01T23:30:15.598Z
+lastmod: 2024-05-20T14:54:20.887Z
+source: https://angular.io/tutorial
 ---
-## install Node
 
-```powershell
-winget install OpenJS.NodeJS
-```
-
-# Clone App
-
-```powershell
-gh repo clone bamr87/angular-tour-of-heroes
-```
-
-# install angular
-
-```powershell
-npm install -g @angular/cli
-```
-
-```powershell
-npm instal
-```
+{{ page.source }}

@@ -1,10 +1,15 @@
 ---
-title: {title}
+title: template
+sub-title: null
+description: null
+excerpt: null
+preview: /
+snippet: null
 author: null
 layout: default
-description: null
-draft: true
-sort_by: date
-# permalink: {title}
-lastmod: 2022-06-04T18:47:40.734Z
+keywords: []
+tags: []
+categories: []
+lastmod: 2024-05-11T21:38:13.842Z
+slug: null
 ---

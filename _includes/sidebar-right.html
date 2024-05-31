@@ -1,39 +1,47 @@
-<!-- Sidebar-right.html 
-     _includes/nav_list.html 
+<!-- 
+  file: sidebar-right.html 
+  path: _includes/sidebar-right.html
+  includes: nav_list.html, toc.html
 -->
 
-<!-- Right sidebar container -->
+<!-- TOC button in mobile view  -->
+<div class="d-flex justify-content-end position-fixed top-50 end-0 translate-middle-y me-3">
 
-<!-- On this page -->
-  <div class="bd-toc">
-
-    <!-- Source code location -->
-    {% include dev-shortcuts.html %}
-
-  <!-- Table of contents -->
-  <button class="btn btn-link text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
-    On this page
-    <svg class="bi d-md-none ms-2" aria-hidden="true"><use xlink:href="#chevron-expand"></use></svg>
+  <button class="btn bg-opacity-2 bd-toc-toggle d-lg-none border z-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocContents" aria-controls="tocContents">
+    <i class="bi bi-list-ul"></i>
   </button>
+</div>
 
-  <strong class="d-none d-md-block h6 my-2">
-    <i class="fas fa-file-alt"></i>
-    On this page
-  </strong>
-  
-  <div class="bd-toc-collapse collapse" id="tocContents" style="">
+<!-- Right sidebar container -->
+<div class="offcanvas-lg offcanvas-end" tabindex="-1" id="tocContents" aria-labelledby="tocLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="tocLabel">Table of Contents</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#tocContents"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Table of contents -->
+    <nav id="TableOfContents">
+      <!-- TOC tile -->
+      <div>
+        <strong>
+          <i class="fas fa-file-alt"></i>
+          On this page
+        </strong>
+      </div>
 
-    <nav class="" id="TableOfContents">
-      {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="" item_class="" anchor_class="" skip_no_ids=true %}
+    <!-- TOC list -->
+
+    <!-- TOC list -->
+      {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="list-group-flush" item_class="list-group-item" anchor_class="" skip_no_ids=true %}
     </nav>
   </div>
-  
-  <!-- Back to Top -->
-  
-  <button onclick="topFunction()" id="backToTopBtn" title="Go to top">
-    <span class="arrow">&uarr;</span>
-    <span class="text">Back to Top</span>
-  </button>
-  
 </div>
+  <!-- Back to Top -->
+  <div>
+    <button onclick="topFunction()" id="backToTopBtn" title="Go to top">
+      <span class="arrow">&uarr;</span>
+      <span class="text">Back to Top</span>
+    </button>
+  </div>
+
   

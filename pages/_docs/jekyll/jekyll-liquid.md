@@ -1,13 +1,19 @@
 ---
-key: tutorial
 title: Jekyll - Liquid
+key: tutorial
 index: 8111
 subcategory: jekyll
+status: published
 date: 2016-01-19
 tags:
   - Jekyll
   - Liquid
-lastmod: 2022-06-04T17:35:42.089Z
+lastmod: 2024-05-16T19:50:34.990Z
+sources:
+  - https://shopify.github.io/liquid/
+  - https://help.shopify.com/themes/liquid/objects/for-loops
+  - https://jekyllrb.com/docs/liquid/filters/
+draft: draft
 ---
 
 > Useful tricks of Liquid, which are used in Jekyll.

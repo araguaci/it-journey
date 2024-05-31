@@ -1,69 +1,79 @@
 <!-- 
-    Header
-    _includes/branding.html, _includes/navbar.html
+  file: header.html
+  path: /_includes/header.html
+  includes:  branding.html, navbar.html, info-bar.html, halfmoon.html
+  TODO: Fix Nanobar progress bar
  -->
 
-<header id="navbar" class="bd-header navbar navbar-expand-lg navbar-dark bg-body-tertiary sticky-top bottom-shadow" role="banner">
-    <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
-        
-        <!-- Collapse Button in mobile view -->
-        <div class="bd-navbar-toggle flex-grow-1">
+<header id="navbar" class="container-fluid  text-center z-1" role="navigation">
 
-            <button class="navbar-toggler p-2" 
-                type="button" 
-                data-bs-toggle="offcanvas" 
-                data-bs-target="#bdSidebar" 
-                aria-controls="bdSidebar" 
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- Top Navigation Bar -->
+    <div class="navbar navbar-expand-lg bg-body-tertiary flex-nowrap justify-content-center bottom-shadow">
+       
+        <div class="nanobar" id="top-progress-bar" style="position: fixed;">
+            <div class="bar"></div>
         </div>
+        <!-- Main Navbar -->
+        <nav class=" container-xl order-2 order-lg-1 grid gap-1">
 
-        <!-- Home Link -->
-        {%- for home in site.data.navigation.home -%}
-        <a class="btn flex-grow-1" href="{{ home.url | relative_url }}">
-            <i class="{{ site.default_icon}} {{ home.icon }}" ></i>
-        </a>
-        {% endfor %}
+            <!-- Offcanvas button for left side bar in mobile view -->
+            <div class="bd-navbar-toggle ">
+                <button class="navbar-toggler p-2" 
+                        type="button" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#bdSidebar" 
+                        aria-controls="bdSidebar" 
+                        aria-label="Toggle navigation">
+                <span class="bi bi-list"></span>
+                </button>
+            </div>
 
-            <!-- include branding.html -->
-            {% include branding.html %}
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
-            
-            <!-- include navbar.html -->
-            {% include navbar.html %}
-        </div>
-            
-        <!-- Settings Collapse button -->
-        <div class="btn flex-grow-1"
-        data-toggle="collapse" 
-        data-target=".dev-settings" 
-        aria-expanded="false" 
-        aria-controls="" >
-            <i 
-                type="button" 
-                class="{{site.default_icon}} bi-gear">
-            </i>
-        </div>
+            <!-- Home and Root Logo -->
+            <div class="container d-inline-flex text-center ">
+                <!-- Home Link -->
+                {%- for home in site.data.navigation.home -%}
+                <a class="btn " href="{{ home.url | relative_url }}">
+                    <i class="{{ site.default_icon}} {{ home.icon }}" ></i>
+                </a>
+                {% endfor %}
+                <!-- Brand Logo to root  -->
+                <!-- set the URL for the logo image in the _config file -->
+                {% capture logo_path %}{{ site.logo }}{% endcapture %}
+                <a class="navbar-brand" href="/">
+                    <img src="{{ logo_path | relative_url }}" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <!-- include branding.html --> 
+                {% include branding.html %}
     
-    <!-- Dark Mode Switch -->
+                <!-- include navbar.html -->
+                {% include navbar.html %}
 
-    {% include halfmoon.html %}
+            <!-- Settings modal button -->
+            <div 
+                class="btn"
+                data-bs-toggle="modal" 
+                data-bs-target="#info-section" 
+                aria-expanded="false" 
+                aria-controls="#info-section"
+                role="button"  >
+                <i 
+                    type="button" 
+                    class="{{site.default_icon}} bi-gear">
+                </i>
+            </div>
 
-      <div class="bd-navbar-toggle flex-grow-1">
-
-    <!-- offcanvas button for nav links -->
-        <button class="navbar-toggler p-2" 
-            type="button" 
-            data-bs-toggle="offcanvas" 
-            data-bs-target="#bdNavbar" 
-            aria-controls="bdNavbar" 
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- Offcanvas button for nav links -->
+            <div class="bd-navbar-toggle ">
+                <button class="navbar-toggler p-2" 
+                        type="button" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#bdNavbar" 
+                        aria-controls="bdNavbar" 
+                        aria-label="Toggle navigation">
+                        <span class="bi bi-three-dots"></span>
+                </button>
+            </div>
+        </nav>
     </div>
-
-      
-    </nav>
 </header>

@@ -18,5 +18,20 @@
     "[search-result]": {
         "editor.lineNumbers": "on"
     },
-    "frontMatter.content.autoUpdateDate": true
+    "frontMatter.content.autoUpdateDate": true,
+    "cSpell.words": [
+        "bamr",
+        "endcapture",
+        "endraw",
+        "Groking",
+        "Inkscape",
+        "Jamstack",
+        "Krita",
+        "lastmod",
+        "markdownify",
+        "MERN",
+        "Picade",
+        "sublinks",
+        "winget"
+    ]
 }

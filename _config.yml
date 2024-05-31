@@ -30,24 +30,29 @@
 
 founder                  : "Amr Abdel-Motaleb"
 title                    : IT-Journey
-masthead_title           : # override the default title
+title_url                : "/"
+title_icon               : "globe"
 subtitle                 : "zer0 to her0"
 subtitle_url             : "localhost"
+subtitle_icon            : "code"
 title_separator          : "|" # Appears in the web browser tab name
-domain                   : *github_base_url
-site_domain              : &site_domain "github.io"
+domain                   : &domain "it-journey.dev"
 baseurl                  : "" # the subpath of your site, e.g. /blog - Use this if you want this whole repo to be a domain branch
-github_base_url          : [*github_user, '.' , *site_domain] # the base hostname & protocol for your site, e.g. http://example.com
-url                      : *github_base_url
+url                      : 'https://it-journey.dev' # the base hostname & protocol for your site, e.g. http://example.com
+public_folder            : "/assets"
 port                     : 4002 # Jekyll Serve Dev port
-dg_port                  : 4001 # Doppelganger site. Use this if you want to switch between parallel deployments
+dg_port                  : 4001 # TODO: Doppelganger site. Use this if you want to switch between parallel deployments
+og_image                 : '/assets/images/wizard-on-journey.png'
+
+### Github Information
+github_user              : &github_user "bamr87"
+github_site              : 'bamr87.github.io'
 
 ### Owner Information -------------------------------------------------------------
 
 name                     : &name "Amr"
-email                    : &email "amr.abdel@gmail.com"
-github_user              : &github_user "bamr87"
-description              : &description >- # this means to ignore newlines until "url:"
+email                    : "amr@it-journey.dev"
+description              : >- # this means to ignore newlines until the next variable
   Scrolls and spells of IT magic.
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -57,6 +62,8 @@ repository_name          : &github_repository "it-journey"
 repository               : [*github_user, "/", *github_repository] # GitHub username/repo-name
 local_repo               : *github_repository
 repo_map                 : "_about/"
+github_base_url          : [*github_user, '.' , *site_domain] # the base hostname & protocol for your site, e.g. http://example.com
+portfolio                : [*github_user, '.', 'github.io']
 
 ## Maintainer Information----------------------------------------------------------
 
@@ -65,7 +72,6 @@ maintainers:
     profile: "/github.com/bamr87"
   - name: "Vacant"
     profile: "/github.com"
-
 
 ## Admin Information----------------------------------------------------------
 
@@ -82,18 +88,17 @@ jekyll_admin:
 
 locale                   : "en-US"
 home_dir_pc              : &home-win 'C:\Users\amrab\'
-home_dir_mac             : &home-mac '/Users/amr/'
+home_dir_mac             : &home-mac '/Users/bamr87/'
 local_git_pc             : [ *home-win, 'github' ]
 local_git_mac            : [ *home-mac, 'github' ]
-logo                     : /assets/images/gravatar-small.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-logo_source              : &logo_source "https://www.it-journey.dev"
+logo                     : /assets/images/gravatar-small.png  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo_link                : 'https://www.it-journey.dev'
 
-teaser                   : /assets/images/teaser_default-500x300.png # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+teaser                   : /assets/images/favicon_gpt_computer_retro.png # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+info_banner              : /assets/images/info-banner-mountain-wizard.png # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 _posts_file_structure    : "year-month-day-title.md"
-
-
 
 ## Identity #####################################################################
 
@@ -107,6 +112,15 @@ author:
   twitter_username       : "bamr87"
   github_username        : *github_user
 
+
+## Site verification #############################################################
+
+google_site_verification : null
+bing_site_verification   : null
+alexa_site_verification  : null
+yandex_site_verification : null
+aver_site_verification   : null
+baidu_site_verification  : null
 
 ## Affiliations ##############################################################
 
@@ -134,7 +148,7 @@ powered_by:
     url: "https://www.ruby-lang.org/"
     icon: "bi-gem"
   - name: "Jekyll"
-    version: "3.9.2"
+    version: "3.9.5"
     url: "https://jekyllrb.com/"
     icon: "bi-joystick"
   - name: "Bootstrap"
@@ -153,10 +167,13 @@ powered_by:
     url: "https://www.mathjax.org/"
     icon: "bi-calculator"
   - name: "GitHub Pages"
-    version: "228"
+    version: "231"
     url: "https://pages.github.com/"
     icon: "bi-github"
-
+  - name: "docker"
+    version: "20.10.8"
+    url: "https://www.docker.com/"
+    icon: "bi-docker"
 
 ### Plugins 
 # https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins
@@ -168,12 +185,14 @@ plugins:
   - github-pages
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-assets
+  - jekyll-seo-tag
+  - jekyll-paginate
+  # - jekyll-assets
   - jekyll-algolia
-  - jekyll-mermaid  # https://mermaidjs.github.io/
-  - jekyll-admin # https://github.com/jekyll/jekyll-admin
-  - jekyll-redirect-from
-
+  # - jekyll-mermaid  # https://mermaidjs.github.io/
+  # - jekyll-admin # https://github.com/jekyll/jekyll-admin
+  # - jekyll-redirect-from
+  # - bootstrap
   # - jekyll-spaceship
   # - jemoji # Doesn't work for some reason
   # - jekyll-postcss
@@ -217,32 +236,39 @@ collections:
     permalink: /:collection/:name/
   posts:
     output: true
-    permalink: /:collection/:year/:month/:day/:name/
+    permalink: /:collection/:year/:month/:day/:slug/
   docs:
     output: true
     permalink: /:collection/:categories/:name/
   quests:
     output: true
-    permalink: /:collection/:name/
+    permalink: /:collection/:categories/:name/
   hobbies:
     output: true
-    permalink: /:collection/:name/
+    permalink: /:collection/:categories/:name/
+  notebooks:
+    output: true
+    permalink: /:collection/:path/:name/
   notes:
     output: true
-    permalink: /:collection/:name/
+    permalink: /:collection/:path/:name/
   quickstart:
     output: true
-    permalink: /:collection/:categories/
+    permalink: /:collection/:categories/:name/
   about:
     output: true
-    permalink: /:collection/:name/
+    permalink: /:collection/:categories/:name/
 
 permalink: pretty
 
+#  pagination https://jekyllrb.com/docs/pagination/
+
+paginate: 10
+paginate_path: "/pages/:num/"
 
 # Defaults https://jekyllrb.com/docs/configuration/front-matter-defaults/
 
-nav-file: '_data/navigation.yml'
+nav-file: '_data/navigation/map.yml'
 
 defaults:
   # ALL
@@ -251,13 +277,11 @@ defaults:
       path: ""
     values:
       layout: root
-      show_date: true
       author_profile: false
       read_time: true
       comments: # true
       share: true
       related: true
-      toc: true
       sidebar:
         nav: main
     permalink: /:collection/:name/
@@ -268,16 +292,14 @@ defaults:
       path: pages
     values:
       layout: &pages default
-      show_date: true
       author_profile: true
       read_time: true
       comments: # true
       share: true
       related: true
-      toc: true
       toc_sticky: true
       sidebar:
-        nav: main
+        nav: searchCats
     permalink: /:path/:name/
 
   # pages/_about
@@ -289,7 +311,6 @@ defaults:
       collection: about
       share: true
       related: true
-      toc: true
       sidebar:
         nav: about
 
@@ -298,10 +319,10 @@ defaults:
     scope:
       path: pages/_quickstart
     values:
+      layout: default
       collection: quickstart
       share: true
       related: true
-      toc: true
       sidebar:
         nav: quickstart
 
@@ -311,16 +332,14 @@ defaults:
       path: pages/_posts
     values:
       layout: journals
-      show_date: true
       author_profile: true
       read_time: true
       comments: # true
       share: true
       related: true
-      toc: true
       sidebar:
-        nav: main
-      permalink: /:collection/:name/
+        nav: dynamic
+      # permalink: /:collection/:name/
 
   # pages/_docs
   - 
@@ -329,13 +348,11 @@ defaults:
     values:
       layout: *pages
       # category: docs
-      show_date: true
       author_profile: true
       read_time: true
       comments: # true
       share: true
       related: true
-      toc: true
       sidebar:
         nav: docs
     # permalink: /docs/:category/:name/
@@ -346,15 +363,13 @@ defaults:
       path: pages/_quests
     values:
       layout: *pages
-      show_date: true
       author_profile: true
       read_time: true
       comments: # true
       share: true
       related: true
-      toc: true
       sidebar:
-        nav: main
+        nav: dynamic
       permalink: /:categories/:slug
 
   # pages/_hobbies
@@ -365,7 +380,6 @@ defaults:
     values:
       layout: *pages
       share: false
-      toc: true
       author_profile: false
       sidebar:
         nav: hobbies
@@ -378,12 +392,9 @@ defaults:
     values:
       layout: *pages
       share: false
-      toc: true
       author_profile: false
       sidebar:
-        nav: notes
-
-
+        nav: dynamic
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -392,38 +403,35 @@ defaults:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
-#
+
 exclude:
-#   - .sass-cache/
+  - .sass-cache/
   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
+  - .obsidian
   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-  - vendor
+  - gemfiles/
+  - Gemfile
+  - node_modules/
+  - vendor/
+  # - "*.sh"
+  - submodules/
+
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed
-  
+  style: expanded
 
-
-
+#  TODO: Fix bootstrap plugin
+  # load_paths:
+  #   - /usr/local/bundle/gems/bootstrap-5.3.3/assets/stylesheets
 
 algolia:
-  application_id: '99CKJ6KQ3Z'
-  search_only_api_key: '03a0c530bc2ff9acfde23485092602f3'
-  index_name: dev_lifehacker
-
-exclude: [vendor]
+  application_id: 'SP02Z3YYL4'
+  search_only_api_key: '3b9200e21085fbebc263950c157b2682'
+  index_name: dev_it-journey
 
 atom_feed:
 path                   : # blank (default) uses feed.xml
-
 
 ## Style Settings -------------------------------------------------------------
 
@@ -434,36 +442,6 @@ theme_skin               : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 # style                  : "default" # "default", "dark", "light", "solarized-dark", "solarized-light"
 # remote_style           : "bamr87/zer0-mistakes"
 
-## Font Settings ---------------------------------------------------------------
-# font_family             : "Roboto"
-# font_size               : "16px"
-# font_weight             : "400"
-# font_style              : "normal"
-# font_size_mobile        : "16px"
-# font_weight_mobile      : "400"
-# font_style_mobile       : "normal"
-# font_size_tablet        : "16px"
-# font_weight_tablet      : "400"
-# font_style_tablet       : "normal"
-# font_size_desktop       : "16px"
-# font_weight_desktop     : "400"
-# font_style_desktop      : "normal"
-# font_size_large_desktop : "16px"
-# font_weight_large_desktop : "400"
-# font_style_large_desktop : "normal"
-
-## Color Settings --------------------------------------------------------------
-
-### Color Schema Override 
- # https://meodai.github.io/poline/
-
-# Harbour Mirror
-# Harbour Blue
-# Dark Blue
-# Smoking Mirror
-  #3d7695
-  #2f5877
-  #a19587
 
 
 theme_color:
@@ -493,6 +471,14 @@ theme_color:
 
 ## Copyright Settings --------------------------------------------------------------
 
-cr_year: 2023
+cr_year: 2024
 cr_entity: "Amr"
 cr_lisense: "MIT"
+
+## Sitemap Settings --------------------------------------------------------------
+
+# sitemap_include: A list of file extensions that should be included in the sitemap. By default, HTML files and any files with sitemap: true in their front matter are included.
+# sitemap_exclude: A list of files or directories that should be excluded from the sitemap.
+
+sitemap_include: ["html", "xml"]
+sitemap_exclude: ["secret.html", "private"]
